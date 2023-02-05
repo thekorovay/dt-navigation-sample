@@ -5,6 +5,7 @@
       <module name="Navigation_Sample.app" target="11" />
       <module name="Navigation_Sample.feature1" target="11" />
       <module name="Navigation_Sample.feature2" target="11" />
+      <module name="Navigation_Sample.feature3" target="11" />
       <module name="Navigation_Sample.navigationimpl" target="11" />
       <module name="Navigation_Sample.theme" target="11" />
     </bytecodeTargetLevel>

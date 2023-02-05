@@ -1,8 +1,9 @@
-package ai.doubletapp.sample.navigation.feature2.navigation
+package ai.doubletapp.sample.navigation.feature2
 
-import ai.doubletapp.sample.navigation.feature2.Feature2To3Args
 import ai.doubletapp.sample.navigation.feature2.databinding.FragmentFeature2Binding
-import ai.doubletapp.sample.navigation.feature2.di.Feature2Injector
+import ai.doubletapp.sample.navigation.feature2.di.Feature2ComponentHolder
+import ai.doubletapp.sample.navigation.feature2.navigation.Feature2Directions
+import ai.doubletapp.sample.navigation.feature2.navigation.Feature2To3Args
 import ai.doubletapp.sample.navigation.navigationapi.NavigationApi
 import android.content.Context
 import android.os.Bundle
@@ -30,9 +31,16 @@ class Feature2Fragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        (context as Feature2Injector)
-            .injectFeature2Fragment(this)
+        Feature2ComponentHolder.get()
+            .inject(this)
         super.onAttach(context)
+    }
+
+    override fun onDetach() {
+        if (isRemoving) {
+            Feature2ComponentHolder.clear()
+        }
+        super.onDetach()
     }
 
     private fun setClickListeners() {

@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28072916666666664" />
         <entry key="feature1/src/main/res/layout/fragment_feature1.xml" value="0.2947916666666667" />
         <entry key="feature2/src/main/res/layout/fragment_feature2.xml" value="0.18981481481481483" />
+        <entry key="feature3/src/main/res/layout/fragment_feature3.xml" value="0.18981481481481483" />
+        <entry key="navigationimpl/src/main/res/layout/fragment_navigation.xml" value="0.2947916666666667" />
       </map>
     </option>
   </component>

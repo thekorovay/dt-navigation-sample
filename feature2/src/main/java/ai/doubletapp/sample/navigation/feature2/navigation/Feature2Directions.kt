@@ -1,7 +1,5 @@
 package ai.doubletapp.sample.navigation.feature2.navigation
 
-import ai.doubletapp.sample.navigation.feature2.Feature2To3Args
-
 sealed interface Feature2Directions {
 
     object Up : Feature2Directions

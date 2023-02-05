@@ -1,7 +1,7 @@
 package ai.doubletapp.sample.navigation.feature1
 
 import ai.doubletapp.sample.navigation.feature1.databinding.FragmentFeature1Binding
-import ai.doubletapp.sample.navigation.feature1.di.Feature1Injector
+import ai.doubletapp.sample.navigation.feature1.di.Feature1ComponentHolder
 import ai.doubletapp.sample.navigation.feature1.navigation.Feature1Directions
 import ai.doubletapp.sample.navigation.navigationapi.NavigationApi
 import android.content.Context
@@ -30,12 +30,21 @@ class Feature1Fragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        (context as Feature1Injector)
-            .injectFeature1Fragment(this)
+        Feature1ComponentHolder.get()
+            .inject(this)
         super.onAttach(context)
     }
 
+    override fun onDetach() {
+        if (isRemoving) {
+            Feature1ComponentHolder.clear()
+        }
+        super.onDetach()
+    }
+
     private fun setClickListeners() {
-        binding.button.setOnClickListener { navigationApi.navigate(Feature1Directions.ToFeature2) }
+        binding.button.setOnClickListener {
+            navigationApi.navigate(Feature1Directions.ToFeature2)
+        }
     }
 }

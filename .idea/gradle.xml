@@ -10,8 +10,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/di" />
             <option value="$PROJECT_DIR$/feature1" />
             <option value="$PROJECT_DIR$/feature2" />
+            <option value="$PROJECT_DIR$/feature3" />
             <option value="$PROJECT_DIR$/navigationapi" />
             <option value="$PROJECT_DIR$/navigationimpl" />
           </set>

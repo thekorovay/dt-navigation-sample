@@ -1,22 +1,23 @@
 package ai.doubletapp.sample.navigation
 
 import ai.doubletapp.sample.navigation.di.AppComponent
+import ai.doubletapp.sample.navigation.di.ComponentHolderInitializer
 import ai.doubletapp.sample.navigation.di.DaggerAppComponent
-import ai.doubletapp.sample.navigation.feature1.Feature1Fragment
-import ai.doubletapp.sample.navigation.feature1.di.Feature1Injector
-import ai.doubletapp.sample.navigation.feature2.di.Feature2Injector
-import ai.doubletapp.sample.navigation.feature2.navigation.Feature2Fragment
+import ai.doubletapp.sample.navigation.navigationimpl.NavigationActivityProvider
 import android.app.Application
+import javax.inject.Inject
 
-class MainApplication : Application(), Feature1Injector, Feature2Injector {
+internal class MainApplication : Application() {
 
-    private val appComponent: AppComponent = DaggerAppComponent.factory().create()
+    @Inject
+    lateinit var componentHolderInitializer: ComponentHolderInitializer
 
-    override fun injectFeature1Fragment(fragment: Feature1Fragment) {
-        appComponent.injectFeature1Fragment(fragment)
-    }
+    private val appComponent: AppComponent get() = DaggerAppComponent.factory().create(
+        activityProvider = NavigationActivityProvider(this),
+    )
 
-    override fun injectFeature2Fragment(fragment: Feature2Fragment) {
-        appComponent.injectFeature2Fragment(fragment)
+    override fun onCreate() {
+        super.onCreate()
+        componentHolderInitializer.init()
     }
 }
