@@ -18,6 +18,7 @@ internal class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        appComponent.inject(this)
         componentHolderInitializer.init()
     }
 }

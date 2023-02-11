@@ -7,29 +7,30 @@ import ai.doubletapp.sample.navigation.feature3.navigation.Feature3Args
 import ai.doubletapp.sample.navigation.navigationapi.NavigationApi
 import androidx.navigation.NavController
 import javax.inject.Inject
+import javax.inject.Provider
 
 internal class Feature2NavigationApi @Inject constructor(
-    private val navController: NavController,
+    private val navController: Provider<NavController>,
 ): NavigationApi<Feature2Directions> {
 
     override fun navigate(direction: Feature2Directions) {
         when (direction) {
             is Feature2Directions.ToFeature3 -> {
-                navController.navigate(
+                navController.get().navigate(
                     Feature2FragmentDirections.fromFeature2ToFeature3(
                         args = direction.args.toFeature3Args(),
                     )
                 )
             }
             is Feature2Directions.Up -> {
-                navController.navigateUp()
+                navController.get().navigateUp()
             }
         }
     }
 
     companion object {
         private fun Feature2To3Args.toFeature3Args(): Feature3Args = Feature3Args(
-            value = "$someArg1 : $someArg2"
+            value = "$someArg2 : $someArg1"
         )
     }
 }
