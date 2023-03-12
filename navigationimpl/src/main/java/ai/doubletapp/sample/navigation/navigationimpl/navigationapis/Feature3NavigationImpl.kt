@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import javax.inject.Inject
 import javax.inject.Provider
 
-internal class Feature3NavigationApi @Inject constructor(
+internal class Feature3NavigationImpl @Inject constructor(
     private val navController: Provider<NavController>,
 ): NavigationApi<Feature3Directions> {
 
